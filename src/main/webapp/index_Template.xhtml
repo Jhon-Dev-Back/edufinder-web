@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="css/index_template.css" />
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <h:outputStylesheet library="css" name="diseñoInicioSesion.css" />
+        <h:outputScript  library="js"  name="FormularioLogin.js"/>
+         <h:outputStylesheet library="css" name="diseñoRegistro.css" />
+      
+       
+        <title>Facelets Template</title>
+    </h:head>   
+
+    <h:body>
+
+        <div id="top">
+            <ui:insert name="top">
+                <header class="navbar">
+                    <div class="navbar-container">
+
+                        <div class="logo">        
+                            <h:graphicImage name="logo_edufinder.png" library="img" alt="Logo de EduFinder" style="width:100px; height:auto;" />
+                            <h:link  styleClass="logo-text">EduFinder</h:link>
+                        </div>
+
+
+
+
+                        <!-- ENLACES -->
+                        <nav class="nav-links">
+                            <h:link outcome="index" styleClass="nav-item">Inicio</h:link> 
+                            <h:link outcome="index"  styleClass="nav-item">Quiénes somos</h:link>
+                            <h:link outcome="index" styleClass="nav-item">Objetivo</h:link>
+                            <h:link outcome="inicioSesion"  styleClass="nav-item">Iniciar sesión</h:link>
+                            <h:link  outcome="registro" styleClass="nav-item">Registrarse</h:link>
+                        </nav>
+                    </div>
+                </header>
+            </ui:insert>
+        </div>
+
+        <div id="content" class="center_content">
+            <ui:insert name="content">Content</ui:insert>
+        </div>
+
+        <div id="bottom">
+            <ui:insert name="bottom">
+                <footer class="footer">
+                    <div class="footer-container">
+
+
+                        <div class="footer-col">
+                            <div class="footer-logo">
+                                <h:graphicImage library="img" name="logo_edufinder.png" alt="Logo EduFinder" style="width:45px; height:45px;" />
+                                <span class="footer-brand">EduFinder</span>
+                            </div>
+                            <p class="footer-desc">
+                                EduFinder es una plataforma educativa diseñada para conectar estudiantes, 
+                                docentes e instituciones, facilitando el acceso al conocimiento y la orientación académica.
+                            </p>
+                        </div>
+
+                        <div class="footer-col">
+                            <h3>Enlaces útiles</h3>
+                            <ul>
+                                <li><h:outputLink value="inicio.xhtml" styleClass="footer-link">Inicio</h:outputLink></li>
+                                <li><h:outputLink value="quienesSomos.xhtml" styleClass="footer-link">Quiénes somos</h:outputLink></li>
+                                <li><h:outputLink value="objetivo.xhtml" styleClass="footer-link">Nuestro objetivo</h:outputLink></li>
+                                <li><h:outputLink value="login.xhtml" styleClass="footer-link">Iniciar sesión</h:outputLink></li>
+                                <li><h:outputLink value="registro.xhtml" styleClass="footer-link">Registrarse</h:outputLink></li>
+                            </ul>
+                        </div>
+
+                        <div class="footer-col">
+                            <h3>Soporte</h3>
+                            <ul>
+                                <li><a href="#" class="footer-link">Preguntas frecuentes</a></li>
+                                <li><a href="#" class="footer-link">Centro de ayuda</a></li>
+                                <li><a href="#" class="footer-link">Política de privacidad</a></li>
+                                <li><a href="#" class="footer-link">Términos de uso</a></li>
+                            </ul>
+                        </div>
+
+
+                        <div class="footer-col">
+                            <h3>Contáctanos</h3>
+                            <p>📍 Bogotá, Colombia</p>
+                            <p>📧 contacto@edufinder.com</p>
+                            <p>📞 +57 3202790419</p>
+                            <div class="socials">
+                                <a href="#" class="social-link">🌐</a>
+                                <a href="#" class="social-link">📘</a>
+                                <a href="#" class="social-link">🐦</a>
+                                <a href="#" class="social-link">📸</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="footer-bottom">
+                        <p>© 2025 EduFinder. Todos los derechos reservados.</p>
+                    </div>
+                </footer>
+            </ui:insert>
+        </div>
+
+    </h:body>
+
+</html>

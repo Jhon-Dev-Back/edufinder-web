@@ -1,0 +1,107 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 2/07/2025, 6:21:04 p. m.
+    Author     : AdminSena
+*/
+*{
+    text-decoration: none;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.container_initial {
+    background-color: #fff;
+       border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    text-align: center;
+    display: flex;
+    height: 250px
+}
+h2 {
+    color: #fff;
+    
+}
+.user-type-buttons {
+
+
+    align-content: center;
+    justify-content: center;
+    height: 100%;
+
+    width: 175px;
+        background: #1F2937;
+    color: white;
+    border-top-right-radius: 50px;
+border-bottom-right-radius: 50px
+     
+}
+
+.user-type-buttons_init {
+  align-content: center;
+    justify-content: center;
+    height: 100%;
+   width: 175px;
+       background-color: #6B7280;
+    border-top-left-radius: 50px;
+        border-bottom-left-radius: 50px
+}
+.btn {
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+   
+}
+.btn-primary {
+    background-color: #1F2937;
+    color: white;
+    height: 45px;
+    width: 150px;
+    border: 1px solid #fff;
+  display: inline-block;
+  align-content: center;
+  border-radius: 8px;
+}
+.btn-primary:hover {
+    background-color: #374151;
+}
+.btn-secondary {
+    background-color: #6B7280;
+    color: white;
+     height: 45px;
+    width: 150px;
+   border: 1px solid #fff;
+  display: inline-block;
+  align-content: center;
+  border-radius: 8px;
+}
+.btn-secondary:hover {
+    background-color: #4B5563;
+}
+.active {
+    box-shadow: 0 0 0 2px #1F2937;
+}
+.login-link {
+    margin-top: 20px;
+    color: #6B7280;
+}
+.login-link a {
+    color: #1F2937;
+    text-decoration: none;
+    font-weight: 600;
+}
+.login-link a:hover {
+    text-decoration: underline;
+}

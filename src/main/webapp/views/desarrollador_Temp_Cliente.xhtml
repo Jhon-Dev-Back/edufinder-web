@@ -1,0 +1,217 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./desarrolladores_Template.xhtml">
+
+            <ui:define name="content">
+                <div class="content">
+                    <div class="header">
+                        <h1>Listado de Profesionales</h1>
+                        <div>
+                            
+                            <button class="btn btn-primary" onclick="openModalPro()">Agregar Profesional</button>
+                            
+                            <a>
+                                <h:form enctype="multipart/form-data">
+                                    <h:inputFile value="#{controllerDeUsuarios.file}"  styleClass="btn btn-primary" />
+                                    <h:commandButton value="Subir CSV" action="#{controllerDeUsuarios.procesarUsuariosCsv}"
+                                                     styleClass="btn btn-primary"/>
+                                </h:form>
+                            </a>
+                            <a href="#" onclick="openEmailModal(); return false;" >
+                                <button class="btn btn-primary">Redactar Email/s</button>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="profile-container">
+                       
+
+                        <table border="1"  id="t-all" class="jsf-data-tables display nowrap" width="100%"  >
+                            <thead>
+                                <tr>
+                                    <td></td>
+                                    <td style="display: none;"></td>
+                                    <th>Nombres</th>
+                                    <th>Apellido</th>
+                                    <td style="display: none;"></td>
+                                    <th>Especialidad</th>
+                                    <th>Correo Electrónico</th>
+                                    <th>Username</th>
+                                    <th>Edad</th>
+                                    <td style="display: none;"></td>
+                                    <th>Documento</th>
+                                    <th style="display: none;">Contraseña</th>
+                                    <td style="display: none;"></td>
+                                    <th>Rol</th>
+                                    <th>Acciones</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ui:repeat value="#{controllerDeUsuarios.listarUsuariosProfesionales()}"  var="user">
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" class="user-checkbox" value="#{user.correoElectronico}" />
+                                        </td>
+                                        <td style="display: none;">#{user.id}</td>
+                                        <td>#{user.nombres }</td>
+                                        <td>#{user.primerApellido}</td>
+                                        <td style="display: none;">#{user.segundoApellido}</td>
+                                        <td>#{user.especialidadId.nombre}</td>
+                                        <td>#{user.correoElectronico}</td>
+                                        <td>#{user.nombreUsuario}</td>
+                                        <td>#{user.edad}</td>
+                                        <td style="display: none;">#{user.tipoDocumentoId.id}</td>
+                                        <td >#{user.numeroDocumento}</td>
+                                        <td style="display: none;">#{user.contraseña}</td>
+                                        <td style="display: none;">#{user.fechaRegistro}</td>
+                                        <td>#{user.rolId.nombre}</td>
+
+                                        <td>
+                                            <h:form id="formTabla">
+                                                <h:commandButton value="Editar"  action="#{controllerDeUsuarios.editarUsuarioUno(user)}" styleClass="btn-success">
+                                                    <f:ajax execute="@this" render="modalForm" onevent="abrirModalSiCompletado" /></h:commandButton> 
+                                                <h:commandButton id="btn-eliminar" styleClass="btn-elim" value="Eliminar"  action="#{controllerDeUsuarios.EliminarUsuarios(user)}">
+                                                    <f:ajax execute="@this" render="formUsuarios mensajes"  />
+                                                </h:commandButton>
+                                            </h:form>
+                                        </td>
+                                    </tr>
+                                </ui:repeat>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+                <!-- Modal para agregar profesional -->
+                <div id="modales" class="modales" style="display:none;">
+                    <h:form id="modalForm">
+                        <div class="modal-content">
+                            <div class="">
+                                <h1>Editar y/o Agregar  Profesional</h1>
+                            
+                            </div>
+
+                            <div class="form-group">
+                                <label for="nombre">Nombre Completo:</label>
+                                <h:inputText id="nombre" value="#{controllerDeUsuarios.user.nombres}" required="true" />
+                            </div>
+                            <div class="form-group">
+                                <label for="primerA">Primer Apellido</label>
+                                <h:inputText id="primerA" value="#{controllerDeUsuarios.user.primerApellido}" required="true" />
+                            </div>
+                            <div class="form-group">
+                                <label for="SegundoA">Segundo Apellido</label>
+                                <h:inputText id="segundoA" value="#{controllerDeUsuarios.user.segundoApellido}" required="true" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="especialidad">Especialidad:</label>
+                                <h:selectOneMenu id="especialidad" value="#{controllerDeUsuarios.esp.id}">
+                                    <f:selectItem itemLabel="Seleccione una especialidad" itemValue="" />
+                                    <f:selectItems value="#{controllerDeUsuarios.listarEspecialidades()}" />
+
+                                </h:selectOneMenu>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="rol">Rol:</label>
+                                <h:selectOneMenu id="rol" value="#{controllerDeUsuarios.rol.id}">
+                                    <f:selectItem itemLabel="Seleccione un rol" itemValue="" />
+                                    <f:selectItems value="#{controllerDeUsuarios.listarRoles()}" />
+
+                                </h:selectOneMenu>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="usuario">Nombre deUsuario:</label>
+                                <h:inputText id="usuario" value="#{controllerDeUsuarios.user.nombreUsuario}" required="true" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="edad">Edad:</label>
+                                <h:inputText id="edad" value="#{controllerDeUsuarios.user.edad}" required="true" />
+                            </div>
+                            <div class="form-group">
+                                <label for="tipoDocumento">Tipo de Documento:</label>
+                                <h:selectOneMenu id="tipoDocumento" value="#{controllerDeUsuarios.tipod.id}" disabled="#{controllerDeUsuarios.user.tipoDocumentoId != null}">
+                                    <f:selectItem itemLabel="Seleccione un tipo de documento" itemValue="" />
+                                    <f:selectItems value="#{controllerDeUsuarios.listarTipodeDocu()}" />
+
+                                </h:selectOneMenu>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="numeroDocumento">Número Documento:</label>
+                                <h:inputText id="numeroDocumento" value="#{controllerDeUsuarios.user.numeroDocumento}" required="true" disabled="#{controllerDeUsuarios.user.numeroDocumento != null}" />
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Correo Electrónico:</label>
+                                <h:inputText id="email" value="#{controllerDeUsuarios.user.correoElectronico}" required="true" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="contraseña_edit" >Contraseña:</label>
+                                <div class="password-wrapper">
+                                    <h:inputText id="contraseña_edit" value="#{controllerDeUsuarios.user.contraseña}" style="width: 100%;"
+                                                 rendered="#{controllerDeUsuarios.user.contraseña == null}"          
+                                                 />
+                                    
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label   style="display: none;" for="fecha">Fecha de Registro</label>
+                                <h:inputText style="display: none;" id="fecha" value="#{controllerDeUsuarios.user.fechaRegistro}" required="true" disabled="true" />
+                            </div>
+                            
+
+                            <div class="modal-actions">
+                                <h:commandButton value="Cancelar"
+                                                 action="#{controllerDeUsuarios.cancelar()}"
+                                                 onclick="closeModalPro()"
+                                                 styleClass="btns" />
+                                <h:commandButton value="Editar"
+                                                 action="#{controllerDeUsuarios.actualizarUsuario()}" 
+                                                  
+                                                 rendered="#{controllerDeUsuarios.user.numeroDocumento != null}" 
+                                                 class="btn btn-primary" ></h:commandButton>
+
+
+                                <h:commandButton value="Guardar" 
+                                                 action="#{controllerDeUsuarios.crearUsuarios()}" 
+                                                 rendered="#{controllerDeUsuarios.user.numeroDocumento == null}" 
+                                                 styleClass="btn btn-primary" ></h:commandButton>
+
+                            </div> 
+                        </div>
+                        <h:messages  globalOnly="true" style="color: red" />
+                        <h:panelGroup id="SwalPerfil" rendered="#{not empty facesContext.messageList}">
+                     <script>
+                                Swal.fire({
+                                    icon: "#{facesContext.maximumSeverity.ordinal eq 0 ? 'success' : 'error'}",
+                                    title: "#{facesContext.maximumSeverity.ordinal eq 0 ? 'Éxito' : 'Error'}",
+                                    text: "#{facesContext.messageList[0].summary}",
+                                    confirmButtonColor: '#efb810'
+                                });
+                            </script>
+                </h:panelGroup>
+                    </h:form>
+                </div>
+                
+
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

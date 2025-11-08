@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./usuarios_Est_Template.xhtml">
+
+            <ui:define name="content">
+                ui:define name="content">
+                <div class="header">
+                    <h1>Comparativo de Universidades Colombianas</h1>
+                    <p class="subtitle">Ranking, carreras, estudiantes y sedes de 40 instituciones</p>
+                </div>
+
+                <div class="filters">
+                    <button class="filter-btn active" data-filter="all">Todas</button>
+                    <button class="filter-btn" data-filter="top10">Top 10</button>
+                    <button class="filter-btn" data-filter="public">Públicas</button>
+                    <button class="filter-btn" data-filter="private">Privadas</button>
+                    <button class="filter-btn" data-filter="careers">Más de 20 carreras</button>
+                    <button class="filter-btn" data-filter="students">Más de 10,000 estudiantes</button>
+                    
+                </div>
+
+                <div class="university-grid">
+                    <!-- Ejemplo de tarjeta -->
+                    <div class="university-card rank-1 type-public careers-95 students-53000">
+                        <div class="university-logo-container">
+                            <h:graphicImage value="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Escudo_de_la_Universidad_Nacional_de_Colombia_%282016%29.svg/1596px-Escudo_de_la_Universidad_Nacional_de_Colombia_%282016%29.svg.png" alt="UNAL" styleClass="university-logo"/>
+                        </div>
+                        <div class="university-info">
+                            <span class="ranking top-3">#1</span>
+                            <h3 class="university-name">Universidad Nacional de Colombia</h3>
+                            <div class="university-stats">
+                                <div class="stat-item">
+                                    <span class="stat-label">Carreras</span>
+                                    <span class="stat-value">95</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-label">Estudiantes</span>
+                                    <span class="stat-value">53,000</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-label">Sedes</span>
+                                    <span class="stat-value">8</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-label">Tipo</span>
+                                    <span class="stat-value">Pública</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="university-card rank-2 type-public careers-64 students-36000">
+                        <div class="university-logo-container">
+                            <h:graphicImage value="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Escudo-UdeA.svg/1655px-Escudo-UdeA.svg.png" alt="UdeA" styleClass="university-logo"/>
+                        </div>
+                        <div class="university-info">
+                            <span class="ranking top-3">#2</span>
+                            <h3 class="university-name">Universidad de Antioquia</h3>
+                            <div class="university-stats">
+                                <div class="stat-item">
+                                    <span class="stat-label">Carreras</span>
+                                    <span class="stat-value">64</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-label">Estudiantes</span>
+                                    <span class="stat-value">36,000</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-label">Sedes</span>
+                                    <span class="stat-value">5</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-label">Tipo</span>
+                                    <span class="stat-value">Pública</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="university-card rank-3 type-private careers-45 students-18000">
+                        <div class="university-logo-container">
+                            <h:graphicImage library="img" name="andes.png" alt="Uniandes" styleClass="university-logo"/>
+                        </div>
+                        <div class="university-info">
+                            <span class="ranking top-3">#3</span>
+                            <h3 class="university-name">Universidad de los Andes</h3>
+                            <div class="university-stats">
+                                <div class="stat-item">
+                                    <span class="stat-label">Carreras</span>
+                                    <span class="stat-value">45</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-label">Estudiantes</span>
+                                    <span class="stat-value">18,000</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-label">Sedes</span>
+                                    <span class="stat-value">1</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-label">Tipo</span>
+                                    <span class="stat-value">Privada</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Agregar el resto de universidades siguiendo el mismo formato -->
+                </div>
+                 <div class="pagination"></div>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

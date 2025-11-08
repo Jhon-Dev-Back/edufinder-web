@@ -1,0 +1,92 @@
+/*
+    Created on : 29/06/2025, 1:47:47 p. m.
+    Author     : Yiseth Lopez
+*/
+
+.cnt {
+  width: 800px;
+    padding: 20px;
+    margin-left: 25%;
+}
+
+.hdr {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.hdr h1 {
+    margin: 0;
+    color: #1F2937;
+}
+
+.pf {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sec {
+    margin-bottom: 30px;
+}
+
+.sec h2 {
+    border-bottom: 2px solid #1F2937;
+    padding-bottom: 5px;
+    color: #1F2937;
+}
+
+.inf {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.itm {
+    margin-bottom: 10px;
+}
+
+.itm label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.itm input,
+.itm select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.btn {
+    background-color: #1F2937;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn:hover {
+    background-color: #374151;
+}
+
+.act {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+

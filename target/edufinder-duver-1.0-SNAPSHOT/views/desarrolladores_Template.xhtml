@@ -1,0 +1,154 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      >
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css"/>
+        <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css"/>
+
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <h:outputStylesheet name="/css/default.css"/>
+        <h:outputStylesheet name="/css/cssLayout.css"/>
+        <h:outputStylesheet name="/css/diseñoDesarrollador.css"/>
+        <h:outputStylesheet name="/css/correo.css"/>
+        <h:outputStylesheet name="/css/graficas.css"/>
+        <h:outputScript name="uni.js" library="js" target="body" />
+        <h:outputScript name="modalAdmin.js" library="js" target="body" />
+        <h:outputScript name="dev.js" library="js" target="body" />
+        <h:outputScript name="email-modal.js" library="js" target="body" />
+        <h:outputScript library="js" name="FormularioLogin.js" />
+        <h:outputScript library="js" name="graficas.js" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+        <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <title>Interfaz de Administrador</title>
+    </h:head>
+
+    <h:body>
+
+        <div id="left">
+            <ui:insert name="left">
+                <div class="sidebar">
+                    <div class="profile">
+                        <h3>Sistema Administrativo</h3>
+                    </div>
+                    <a href="universidades_Temp_Cliente.xhtml">Universidades Perfil</a>
+                    <a href="admin_Temp1_Cliente.xhtml">Administradores Perfil</a>
+                    <a href="desarrollador_Temp_Cliente.xhtml">Profesionales Perfil</a>
+                    <a href="correos_enviados.xhtml">Correos</a>
+                    <a href="dash_Temp_Cliente.xhtml">Dashboard</a>
+                    <a href="uni_web_Serv_Temp_Cliente.xhtml">Sobre Nosotros</a>
+                    <a> <button type="button" class="a" data-bs-toggle="modal" data-bs-target="#modalCerrarSesion">
+                        Cerrar Sesión
+                        </button></a>
+                </div>
+            </ui:insert>
+        </div>
+        <div id="content" class="left_content">
+            <div class="cont-email"  style="display: none">
+                <h:form id="formCorreo" styleClass="form-email">
+                    <div class="close-m">
+                        <h2>Redactar Correo</h2>
+                        <i class="fi fi-rr-x" onclick="closeEmailModal()"></i>
+                    </div>
+
+                    <p:inputText 
+                        styleClass="in" 
+                        placeholder="Correo/s" id="destinatarios" value="#{controllerDeUsuarios.destinatarios}" />
+                    <br />
+
+                    <p:inputText 
+                        styleClass="inp" 
+                        placeholder="Asunto"  value="#{controllerDeUsuarios.asunto}"/>
+                    <br />
+
+                    <p:inputTextarea 
+                        styleClass="area" 
+                        placeholder="Escriba Algo..."  value="#{controllerDeUsuarios.mensaje}"/>
+
+                    <div class="icon-btn">
+                        <h:commandButton value="Enviar" styleClass="btn-email" action="#{controllerDeUsuarios.enviarCorreoJSF()}" >
+                        </h:commandButton>
+                        <button class="btn-email" type="button" style="margin-left: 15px"  onclick="closeEmailModal()" >Cancelar</button>
+
+                        <i class="fi fi-rr-underline"></i>
+                        <i class="fi fi-rr-clip"></i>
+                        <i class="fi fi-rs-link-alt"></i>
+                        <i class="fi fi-rr-smile"></i>
+                        <i class="fi fi-rs-gallery"></i>
+                        <i class="fi fi-rr-menu-dots-vertical"></i>
+                        <h:panelGroup id="mensajesSwalTemp" rendered="#{not empty facesContext.messageList}">
+                            <script>
+
+                                Swal.fire({
+                                    icon: "#{facesContext.maximumSeverity.ordinal eq 0 ? 'success' : 'error'}",
+                                    title: "#{facesContext.maximumSeverity.ordinal eq 0 ? 'Éxito' : 'Error'}",
+                                    text: "#{facesContext.messageList[0].summary}",
+                                    confirmButtonColor: '#efb810'
+                                }).then(function () {
+                                    if (success) {
+                                        closeEmailModal();
+                                    }
+                                });
+                                ;
+                            </script>
+                        </h:panelGroup>
+
+                    </div>
+
+                </h:form>
+            </div>
+            <div class="modal fade" id="modalCerrarSesion" tabindex="-1" style="display: none" aria-labelledby="cerrarSesionLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-contenido">
+
+                        <div class="modal-cabecera-personalizada">
+                            <h2 class="modal-titulo" id="cerrarSesionLabel">Confirmar Cierre de Sesión</h2>
+                        </div>
+
+                        <div class="modal-cuerpo-personalizado">
+                            
+                            <h2>¿Está seguro que desea cerrar sesión?</h2>
+                            <div class="botons">
+                             <h:form>
+                                <h:commandButton value="Si, Cerrar Sesión" 
+                                                 action="#{login.cerrarSesion()}"
+                                                 styleClass="modal-boton-confirmar"/>
+                            </h:form>
+                             <button type="button" class="modal-boton-cancelar" data-bs-dismiss="modal">No, Cancelar</button>
+
+                            </div>
+                        </div>
+  
+                    </div>
+                </div>
+            </div>
+            <ui:insert name="content">
+
+            </ui:insert>
+
+
+        </div>
+
+    </h:body>
+
+</html>

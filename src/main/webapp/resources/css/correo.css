@@ -1,0 +1,170 @@
+.cont-email{
+    background-color: #1F2937;
+    width: 500px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+
+}
+
+h2{
+    color: aliceblue;
+}
+.form-email{
+   display: flex;
+    flex-direction: column; 
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+    margin-left: 10px;
+}
+
+
+
+.in{
+     border-radius: 6px;
+    height: 25px;
+    width: 95%;
+}
+
+.inp{
+    height: 25px;
+    width: 95%;
+    margin-top: 25px;
+    border-radius: 6px;
+}
+.area{
+    margin-top: 40px;
+    width: 95%;
+    height: 45%;
+     border-radius: 6px;
+}
+
+.btn-email{
+    margin: 10px 0;
+    border: none;
+    height: 30px;
+    width: 90px;
+    font-size: medium;
+    color: black;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 8px
+}
+
+.btn-email:hover{
+    background: rgb(226, 230, 237);
+    color: rgb(6, 32, 54);
+}
+
+.icon-btn{
+    display: flex;
+    align-items: start;
+}
+
+
+
+i{
+
+    margin-top: 15px ;
+    color: aliceblue;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.fi-rr-underline{
+
+     margin-left: 5px;
+     margin-right: 5px ;
+}
+
+.fi-rs-gallery{
+    margin-left: 5px ;
+}
+
+.fi-rr-smile{
+
+    margin-left: 5px ;
+}
+
+ .fi-rr-menu-dots-vertical{
+    margin-left: 250px;
+}
+
+.close-m{
+    display: flex;
+    align-items: center;
+}
+
+.fi-rr-x{
+    font-size: 17px;
+    font-weight: 700;
+    margin-left: 255px;
+}
+
+i:hover{
+    color: rgb(222, 167, 59);
+}
+
+
+
+/* Caja del modal */
+.cont-email {
+    background-color: #1F2937;
+    width: 475px;          /* más pequeño para esquina */
+    height: 450px;
+    position: fixed;       /* se queda fija */
+    bottom: 20px;          /* margen desde abajo */
+    right: 20px;           /* margen desde la derecha */
+    display: none;         /* oculto al inicio */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    animation: fadeIn 0.3s ease-in-out;
+    z-index: 9999;         /* encima de todo */
+}
+
+
+/* Animación de entrada */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+
+
+.email-input-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 4px;
+    cursor: text;
+}
+
+.email-input-container input {
+    border: none;
+    outline: none;
+    flex: 1;
+    min-width: 150px;
+}
+
+.email-tag {
+    background: #e0e0e0;
+    border-radius: 12px;
+    padding: 4px 8px;
+    margin: 2px;
+    display: flex;
+    align-items: center;
+}
+
+.email-tag .remove {
+    margin-left: 6px;
+    cursor: pointer;
+    color: #555;
+    font-weight: bold;
+}

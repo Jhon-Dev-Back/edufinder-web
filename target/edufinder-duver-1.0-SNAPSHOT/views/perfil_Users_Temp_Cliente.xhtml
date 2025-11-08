@@ -1,0 +1,152 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./usuarios_Est_Template.xhtml">
+
+            <ui:define name="content">
+                <h:form  id="modalForm">
+                    <div class="cnt">
+
+                        <div class="hdr">
+                            <h1>Mi Perfil</h1>
+                        </div>
+
+                        <div class="pf">
+                            <div class="sec">
+                                <h2>Información Personal</h2>
+                                <div class="inf">
+                                    <div class="itm">
+                                        <label for="nm">Nombre(s)</label>
+                                        <h:inputText value="#{login.user.nombres}" id="nm" />
+                                    </div>
+
+                                    <div class="itm">
+                                        <label for="ap1">Primer Apellido</label>
+                                        <h:inputText value="#{login.user.primerApellido}" id="ap1" />
+                                    </div>
+
+                                    <div class="itm">
+                                        <label for="ap2">Segundo Apellido</label>
+                                        <h:inputText value="#{login.user.segundoApellido}" id="ap2" />
+                                    </div>
+
+                                    <div class="itm">
+                                        <label for="tdoc">Tipo de Documento</label>
+                                        <h:selectOneMenu disabled="true" id="tipoDocumento" value="#{login.user.tipoDocumentoId.id}">
+                                            <f:selectItem itemLabel="Seleccione un tipo de documento" itemValue="" />
+                                            <f:selectItems value="#{controllerDeUsuarios.listarTipodeDocu()}" />
+                                        </h:selectOneMenu>
+                                    </div>
+
+                                    <div class="itm">
+                                        <label for="ed">Edad</label>
+                                        <h:inputText value="#{login.user.edad}" id="ed"  />
+                                    </div>
+                                    <div class="itm">
+                                        <label for="doc">Documento</label>
+                                        <h:inputText disabled="true" value="#{login.user.numeroDocumento}" id="doc"  />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="sec">
+                                <h2>Información de Cuenta</h2>
+                                <div class="inf">
+                                    <div class="itm">
+                                        <label for="em">Correo Electrónico</label>
+                                        <h:inputText value="#{login.user.correoElectronico}" id="em" />
+                                    </div>
+
+                                    <div class="itm">
+                                        <label for="usr">Nombre de Usuario</label>
+                                        <h:inputText value="#{login.user.nombreUsuario}" id="usr" />
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                            <h:commandButton value="Editar"
+                                             action="#{login.actualizarUsuario()}" 
+                                             styleClass="btn btn-primary" ></h:commandButton>
+                            <button style="margin-left: 15px;"
+                                    type="button"
+                                             onclick="openModalContraseña()"
+                                             class="btn btn-primary" >Cambiar Contraseña</button>
+                        </div>
+
+                        <h:messages  globalOnly="true" style="color: red" />
+                    </div>
+                    <h:panelGroup id="mensajesSwalUni" rendered="#{not empty facesContext.messageList}">
+                        <script>
+                            Swal.fire({
+                                icon: "#{facesContext.maximumSeverity.ordinal eq 0 ? 'success' : 'error'}",
+                                title: "#{facesContext.maximumSeverity.ordinal eq 0 ? 'Éxito' : 'Error'}",
+                                text: "#{facesContext.messageList[0].summary}",
+                                confirmButtonColor: '#efb810'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location = "#{facesContext.externalContext.requestContextPath}/views/perfil_Users_Temp_Cliente.xhtml";
+                                }
+                            });
+                        </script>
+                    </h:panelGroup>
+                </h:form> 
+                <div id="change" class="change" style="display:none;">
+                    <h:form id="modalPass">
+                        <div class="content-ido">
+                            <div class="">  
+                                <h2>Cambiar Contraseña</h2>
+                                <span class="closes" onclick="closeModalContraseña()">&times;</span>
+                            </div>
+
+                            <div class="group">
+                                <label for="actualC"  class="labels">Contraseña Actual:</label>
+                                <h:inputSecret id="actualC" value="#{login.user.contraseña}" required="true" requiredMessage="El campo contraseña actual es obligatorio"   />
+                            </div>
+                            <div class="group">
+                                <label for="nuevaC" class="labels">Nueva Contraseña:</label>
+                                <h:inputSecret id="nuevaC" value="#{login.contrasenna}" required="true" requiredMessage="El campo nueva contraseña es obligatorio"  />
+                            </div>
+                            <div class="group">
+                                <label for="confirm"  class="labels" >Confirmar Contraseña:</label>
+                                <h:inputSecret id="confirm" value="#{login.newContraseña}" required="true" requiredMessage="El campo confirmar contraseña es obligatorio" />
+                            </div>
+                             <h:commandButton value="Actualizar"
+                                              action="#{login.cambiarContraseña()}"
+                                              
+                                             styleClass="btn btn-primary" ></h:commandButton>
+                            <button style="margin-left: 15px;"
+                                    type="button"
+                                             onclick="closeModalContraseña()"
+                                             class="btn btn-primary" >Cancelar</button>
+                        </div>
+                       <h:panelGroup id="mensajesSwalUni" rendered="#{not empty facesContext.messageList}">
+                        <script>
+                            Swal.fire({
+                                icon: "#{facesContext.maximumSeverity.ordinal eq 0 ? 'success' : 'error'}",
+                                title: "#{facesContext.maximumSeverity.ordinal eq 0 ? 'Éxito' : 'Error'}",
+                                text: "#{facesContext.messageList[0].summary}",
+                                confirmButtonColor: '#efb810'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location = "#{facesContext.externalContext.requestContextPath}/views/perfil_Users_Temp_Cliente.xhtml";
+                                }
+                            });
+                        </script>
+                    </h:panelGroup>
+                    </h:form>
+                
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -1,0 +1,143 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: calc(100vh - 160px);
+}
+
+.section {
+    display: none;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.active {
+    display: block;
+}
+
+h2, h3, p{
+    color: #1F2937;
+}
+
+button {
+    background-color: #1F2937;
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    margin: 10px 5px;
+}
+
+button:hover {
+    background-color: #374151;
+}
+
+/* Estilos para el test */
+.progress-bar {
+    width: 100%;
+    background-color: #f3f4f6; /* gris claro */
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.progress {
+    height: 10px;
+    background-color: #1F2937;
+    border-radius: 5px;
+    width: 0%;
+    transition: width 0.5s;
+}
+
+.question-card {
+    margin-bottom: 20px;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.options label {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border-radius: 5px;
+    background-color: #f9fafb;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: 1px solid #e5e7eb;
+}
+
+.options label:hover {
+    background-color: #f3f4f6;
+}
+
+.options input {
+    margin-right: 10px;
+}
+
+#error-msg {
+    color: #dc2626; /* rojo error */
+    margin-bottom: 15px;
+    display: none;
+}
+
+/* Estilos para resultados */
+.results {
+    display: none;
+}
+
+.career-match {
+    background-color: #f9fafb;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #e5e7eb;
+}
+
+.career-match h3 {
+    margin-top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #1F2937;
+}
+
+.percentage {
+    background-color: #1F2937;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.chart-container {
+    margin: 30px 0;
+    height: 300px;
+}
+
+.result-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.options label {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border-radius: 5px;
+    background-color: #f9fafb;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: 1px solid #e5e7eb;
+    color: #1F2937; /* 👈 Texto oscuro para las opciones */
+    font-size: 15px;
+}

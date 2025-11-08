@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./desarrolladores_Template.xhtml">
+
+            <ui:define name="content">
+                <div class="content">
+                    <div class="header">
+                        <h1>Listado de Universidades</h1>
+                        <div>
+                            <a href="../html/error404.xhtml" onclick="openModal(); return false;">
+                                <button class="btn btn-primary">Agregar Universidad</button>
+                            </a>
+                            <a>
+                                <h:form enctype="multipart/form-data">
+                                    <h:inputFile value="#{controllerUniversity.file}"  styleClass="btn btn-primary" />
+                                    <h:commandButton value="Subir CSV" action="#{controllerUniversity.procesarCsvUniversidades()}"
+                                                     styleClass="btn btn-primary"/>
+                                </h:form>
+                            </a>
+                            <a  onclick="openEmailModal(); return false;" >
+                                <button class="btn btn-primary">Redactar Email/s</button>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="profile-container">
+
+
+                        <table  border="1"  id="t-all" class="jsf-data-tables display nowrap" width="100%" >
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre Institucion</th>
+                                    <th>Ubicación</th>
+                                    <th>Correo Institucional</th>
+                                    <th>Usuario Encargado</th>
+                                    <th>Fecha de Registro</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ui:repeat value="#{controllerUniversity.obtenerUniversidades()}"  var="univer" >
+                                    <tr>
+                                        <td>#{univer.id}</td>
+                                        <td>#{univer.nombreUniversidad}</td>
+                                       <td>#{univer.nombreCiudad}</td>
+                                        <td>#{univer.contactoEmail}</td>
+                                      <td>#{univer.nombreCreador}</td>
+                                        <td>#{univer.fechaRegistro}</td>
+                                        <td>
+                                            <h:form id="formTabla">
+                                                <h:commandButton value="Editar"  action="#{controllerUniversity.editarUniversidad(univer)}" styleClass="btn-success">
+                                                    <f:ajax execute="@this" render="modalForm" onevent="abrirModalSiCompletado" /></h:commandButton> 
+                                                <h:commandButton value="Eliminar"  action="#{controllerUniversity.EliminarUniversidad(univer)}"  styleClass="btn-elim">
+                                                    <f:ajax execute="@this" render="formUsuarios mensajes"  />
+                                                </h:commandButton>                                    
+                                            </h:form>
+                                        </td>
+                                    </tr>
+                                </ui:repeat>
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+
+                <div id="modal" class="modal" style="display:none;">
+                    <h:form id="modalForm"> 
+                        <div class="modal-content">
+                            <div class="">
+                                <h1>Editar y/o Agregar Universidad</h1>
+                                <span class="close" onclick="closeModal()">&times;</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="nombre">Nombre Institucional</label>
+                                <h:inputText id="nombre" value="#{controllerUniversity.undt.nombreUniversidad}" required="true" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="creadopor">Creado Por</label>
+                                    <h:selectOneMenu id="creadopor" value="#{controllerUniversity.undt.id_us}">
+                                        <f:selectItem itemLabel="Seleccione Usuario Responsable" itemValue="" />
+                                        <f:selectItems value="#{controllerDeUsuarios.listarUsuariosAdmin()}" />
+
+                                    </h:selectOneMenu>
+                                </div>
+
+                            <div class="form-group">
+                                <label for="especialidad">Ciudad:</label>
+                                <h:selectOneMenu id="especialidad" value="#{controllerUniversity.undt.id_c}">
+                                    <f:selectItem itemLabel="Seleccione una Ciudad" itemValue="" />
+                                    <f:selectItems value="#{controllerUniversity.listarCiudades()}" />
+
+                                </h:selectOneMenu>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="email">Correo Institucional:</label>
+                                <h:inputText id="email" value="#{controllerUniversity.undt.contactoEmail}" required="true" />
+                            </div>
+
+                            <div class="form-group">
+                                <label   style="display: none;" for="fecha">Fecha de Registro</label>
+                                <h:inputText style="display: none;" id="fecha" value="#{controllerUniversity.undt.fechaRegistro}" required="true" disabled="true" />
+                            </div>
+                            <h:messages globalOnly="true" style="color: red" />
+
+                            <div class="modal-actions">
+                                <h:commandButton value="Cancelar"
+                                                 onclick="closeModal()"
+                                               
+                                                 immediate="true"
+                                                 styleClass="btns" />
+                                <h:commandButton value="Editar" action="#{controllerUniversity.actualizarUniversidades()}" 
+                                                 
+                                                 rendered="#{controllerUniversity.undt.nombreUniversidad != null}" class="btn btn-primary"  >
+                                    </h:commandButton>
+
+                                <h:commandButton value="Guardar" action="#{controllerUniversity.registrarUniversidades()}" 
+                                                 rendered="#{controllerUniversity.undt.nombreUniversidad== null}" styleClass="btn btn-primary" >
+                                    </h:commandButton>
+                            </div>
+                        </div>
+                        <h:panelGroup id="mensajesSwalUni" rendered="#{not empty facesContext.messageList}">
+                     <script>
+                                Swal.fire({
+                                    icon: "#{facesContext.maximumSeverity.ordinal eq 0 ? 'success' : 'error'}",
+                                    title: "#{facesContext.maximumSeverity.ordinal eq 0 ? 'Éxito' : 'Error'}",
+                                    text: "#{facesContext.messageList[0].summary}",
+                                    confirmButtonColor: '#efb810'
+                                });
+                            </script>
+                </h:panelGroup>
+                    </h:form>
+                </div>
+
+                <!-- Notificación -->
+                <div id="notification" class="notification"></div>
+
+                <!-- Modo desarrollador -->
+                <div class="dev-mode">
+                    Modo Desarrollador
+                </div>
+                  
+                
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

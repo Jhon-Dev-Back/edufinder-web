@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./desarrolladores_Template.xhtml">
+
+
+            <ui:define name="content">
+                <div class="contentgr">
+                    <div class="heal">
+                        <h1>DASHBOARD</h1>
+                        <a>
+                            <h:form>
+
+                                <h:commandButton value="Descargar graficas" 
+                                                 onclick="downloadDivAsPDF(); return false;" 
+                                                 styleClass="btn btn-primary"/>
+                            </h:form>
+                        </a>
+                    </div>
+                    <div class="health">
+                        <div class="sweet">
+                            <div id="graficContent"  class="graficContent">
+                                <h:form id="form">
+                                    <h:inputHidden id="usuariosPorRolData" value="#{dashboard.jsonUsuariosPorRol}" />
+                                </h:form>
+                                <div class="dashboard-card graph-cards">
+                                    <div class="card-title"></div>
+                                    <canvas id="usuariosPorRolChart" width="280" height="300"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sweet">
+                            <div id="graficContent"  class="graficContent">
+
+                                <h:form id="formciu">
+                                    <h:inputHidden id="UniverPorCiudad" value="#{dashboard.jsonUniversidadesPorCiudad}" />
+                                </h:form>
+                                <div class="dashboard-card graph-card">
+                                    <div class="card-title"></div>
+                                    <canvas id="UniverPorCiudadChart" width="320" height="300"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sweet">
+                            <div id="graficContent"  class="graficContent">
+                                <h:form id="formedad">
+                                    <h:inputHidden id="usuariosPorEdad" value="#{dashboard.jsonUsuariosPorEdad}" />
+                                </h:form>
+                                <div class="dashboard-card graph-card">
+                                    <div class="card-title"></div>
+                                    <canvas id="usuariosPorEdadChart" width="280" height="300"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="heal">
+                        <div  class="graficContent">
+                            <h:form id="formesp">
+                                <h:inputHidden id="usuariosPorEspecialidad" value="#{dashboard.jsonUsuariosPorEspecialidad}" />
+                            </h:form>
+                            <div class="dashboard-card graph-card">
+                                <div class="card-title"></div>
+                                <canvas id="usuariosPorEspecialidadChart" width="800" height="300"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </ui:define>
+        </ui:composition>
+
+    </body>
+</html>

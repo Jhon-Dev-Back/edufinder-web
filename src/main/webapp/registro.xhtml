@@ -1,0 +1,135 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./index_Template.xhtml">
+
+            <ui:define name="content">
+                  <div class="container_register">
+            
+            <h:form id="registroForm">
+               
+                <h2>Crear Cuenta</h2>
+
+                <div class="form-columns">
+                    <!-- Columna 1 -->
+                    <div class="form-column">
+                        <div class="form-group">
+                            <label for="nombre">Nombre Completo:</label>
+                            <h:inputText id="nombre" value="#{controllerDeUsuarios.user.nombres}" required="true" />
+                        </div>
+                        <div class="form-group">
+                            <label for="primerA">Primer Apellido</label>
+                            <h:inputText id="primerA" value="#{controllerDeUsuarios.user.primerApellido}" required="true" />
+                        </div>
+                        <div class="form-group">
+                            <label for="segundoA">Segundo Apellido</label>
+                            <h:inputText id="segundoA" value="#{controllerDeUsuarios.user.segundoApellido}" required="true" />
+                        </div>
+                        <div class="form-group">
+                            <label for="usuario">Nombre de Usuario:</label>
+                            <h:inputText id="usuario" value="#{controllerDeUsuarios.user.nombreUsuario}" required="true" />
+                        </div>
+                        <div class="form-group">
+                            <label for="especialidad">Especialidad en / Ocupacion:</label>
+                            <h:selectOneMenu id="especialidad" value="#{controllerDeUsuarios.esp.id}">
+                                <f:selectItem itemLabel="Seleccione una especialidad u Ocupacion" itemValue="" />
+                                <f:selectItems value="#{controllerDeUsuarios.listarEspecialidades()}" />
+                            </h:selectOneMenu>
+                        </div>
+                        <div class="form-group">
+                            <label for="rol" style="display: none;">Rol:</label>
+                            <h:selectOneMenu id="rol" value="#{controllerDeUsuarios.rol.id}" style="display: none;">
+                                <f:selectItems value="#{controllerDeUsuarios.listarRolCliente()}" />
+                            </h:selectOneMenu>
+                        </div>
+                    </div>
+
+                    <div class="form-column">
+                        
+                        <div class="form-group">
+                            <label for="edad">Edad:</label>
+                            <h:inputText id="edad" value="#{controllerDeUsuarios.user.edad}" required="true" />
+                        </div>
+                        <div class="form-group">
+                            <label for="tipoDocumento">Tipo de Documento:</label>
+                            <h:selectOneMenu id="tipoDocumento" value="#{controllerDeUsuarios.tipod.id}">
+                                <f:selectItem itemLabel="Seleccione un tipo de documento" itemValue="" />
+                                <f:selectItems value="#{controllerDeUsuarios.listarTipodeDocu()}" />
+                            </h:selectOneMenu>
+                        </div>
+                        <div class="form-group">
+                            <label for="numeroDocumento">Número Documento:</label>
+                            <h:inputText id="numeroDocumento" value="#{controllerDeUsuarios.user.numeroDocumento}" required="true" />
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Correo Electrónico:</label>
+                            <h:inputText id="email" value="#{controllerDeUsuarios.user.correoElectronico}" required="true" />
+                        </div>
+                        <div class="form-group">
+                            <label for="contraseña">Contraseña:</label>
+                            <div class="password-wrapper">
+                                <h:inputSecret id="contraseña" value="#{controllerDeUsuarios.user.contraseña}" required="true" style="width: 100%;" />
+                                <span class="toggle-password" onclick="togglePassword()">
+                                    <i id="iconoOjo" class="fas fa-eye"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h:messages  id="mensajesRegis" globalOnly="true" style="color: red" />
+                <h:commandButton action="#{controllerDeUsuarios.crearUsuarios()}"  value="Registrarse" styleClass="btn">
+                </h:commandButton>
+               
+
+                <div class="login-link">
+                    ¿Ya tienes una cuenta?
+                    <h:outputLink value="inicioSesion.xhtml">
+                        Inicia sesión aquí
+                    </h:outputLink>
+                </div>
+            </h:form>
+        </div>
+          <h:panelGroup id="mensajesReg" rendered="#{facesContext.maximumSeverity.ordinal eq 0}">
+                <script>
+                    document.addEventListener("DOMContentLoaded", function () {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Registro exitoso',
+                            text: "#{facesContext.messageList[0].summary}",
+                            confirmButtonColor: '#efb810'
+                        }).then(() => {
+                            window.location.href = 'inicioSesion.xhtml';
+                        });
+                    });
+                </script>
+            </h:panelGroup>
+
+            <!-- ❌ PanelGroup para error -->
+            <h:panelGroup id="mensajesRegErr" rendered="#{facesContext.maximumSeverity.ordinal ge 2}">
+                <script>
+                    document.addEventListener("DOMContentLoaded", function () {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: "#{facesContext.messageList[0].summary}",
+                            confirmButtonColor: '#f00'
+                        });
+                    });
+                </script>
+            </h:panelGroup>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+                    integrity="sha384-kenU1KFdBIe4zVF0s0G1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+            crossorigin="anonymous"></script>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

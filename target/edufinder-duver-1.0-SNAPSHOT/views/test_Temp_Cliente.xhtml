@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <body>
+
+        <ui:composition template="./usuarios_Est_Template.xhtml">
+
+            <ui:define name="content">
+                <div class="container">
+                    <div id="welcome" class="section active">
+                        <h2>Test Vocacional Universitario</h2>
+                        <p>Descubre las carreras que mejor se adaptan a tu perfil respondiendo algunas preguntas sobre tus intereses y habilidades.</p>
+                        <button onclick="startTest()">Comenzar Test</button>
+                    </div>
+
+                    <div id="test" class="section">
+                        <div class="progress-bar">
+                            <div class="progress" id="progress"></div>
+                        </div>
+                        <div id="error-msg">Por favor selecciona una opción para continuar</div>
+                        <div id="question-container"></div>
+                        <button onclick="nextQuestion()" id="next-btn">Siguiente</button>
+                    </div>
+
+                    <div id="results" class="results" style="display:none;">
+                        <h2>Resultados de tu Test Vocacional</h2>
+                        <div id="career-matches"></div>
+                        <div class="chart-container">
+                            <canvas id="resultsChart"></canvas>
+                        </div>
+                        <div class="result-actions">
+                            <button onclick="window.location.reload()">Repetir Test</button>
+                            <button onclick="window.location.href = 'inicio_principal_Temp_Cliente.xhtml'">Ir a Página Principal</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

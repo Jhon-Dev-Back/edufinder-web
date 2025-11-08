@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body  class="body_chat">
+
+        <ui:composition template="./usuarios_Est_Template.xhtml">
+
+            <ui:define name="content" class="content_ui">
+                <div class="content_chat">
+                    <div class="reponse_and_question">
+
+                        <ui:repeat value="#{chat_AI.listaDeMensajes()}" var="msg">
+                            <p class="#{msg.emisor eq 'usuario' ? 'p_prompt' : 'p_response'}">
+                                #{msg.contenido}
+                            </p>
+                        </ui:repeat>
+                    </div>
+                    <div>
+                        <h:form class="form_chat_bot">
+                            <h:inputText value="#{chat_AI.promt}" class="inp_select"  />
+                            <h:commandButton value="➤" class="btn_send"  action="#{chat_AI.message_ai}">
+                            </h:commandButton>
+                        </h:form>
+                    </div>
+                </div>
+                
+            </ui:define>
+            
+        </ui:composition>
+        
+    </body>
+</html>

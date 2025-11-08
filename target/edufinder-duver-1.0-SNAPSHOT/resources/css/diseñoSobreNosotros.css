@@ -1,0 +1,134 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 29/06/2025, 1:50:11 p. m.
+    Author     : Yiseth Lopez
+*/
+
+    /* Estilos generales */
+    body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #ffffff; /* Fondo blanco */
+        color: #333;
+        font-size: 18px;
+        line-height: 1.6;
+    }
+
+    h2 {
+        font-size: 28px;
+        color: #1f2937; /* Azul claro */
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    p {
+        font-size: 18px;
+        line-height: 1.6;
+        text-align: justify;
+    }
+
+    a {
+        color: #1F2937; /* Azul claro */
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: #1F2937;
+    }
+
+    /* Header */
+    header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #1F2937; /* Azul claro */
+        padding: 1rem 2rem;
+        box-shadow: 0 2px 4px rgba(182, 169, 169, 0.5);
+    }
+
+    header .logo img {
+        height: 40px;
+        margin-right: 10px;
+    }
+
+    header .logo {
+        display: flex;
+        align-items: center;
+        color: #f7f6f6;
+        font-size: 24px;
+    }
+
+    /* Navigation */
+    nav {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    nav a {
+        margin: 0 15px;
+        font-size: 18px;
+        text-decoration: none;
+        font-weight: bold;
+        color: #1F2937;
+    }
+
+    nav a:hover {
+        color: #1F2937;
+    }
+
+    /* Secciones */
+    section {
+        padding: 50px 10%;
+        margin: 20px 0;
+        background-color: #f0f8ff; /* Fondo azul claro sutil */
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3); /* Sombra azul clara */
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    section h2 {
+        color: #262f38;
+    }
+
+    /* Animación fadeIn */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    /* Footer */
+    .footer {
+        background-color: #1F2937; /* Azul claro */
+        padding: 1.5rem 0;
+        color: #ffffff;
+        text-align: center;
+    }
+
+    .footer a {
+        color: #ffffff;
+        text-decoration: none;
+        margin: 0 10px;
+    }
+
+    .footer a:hover {
+        color: #1F2937;
+    }
+
+    /* Responsive */
+    @media screen and (max-width: 768px) {
+        section {
+            padding: 30px 5%;
+        }
+
+        nav a {
+            font-size: 16px;
+        }
+    }

@@ -1,0 +1,110 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 29/06/2025, 1:49:10 p. m.
+    Author     : Yiseth Lopez
+*/
+
+/* Estilos generales */
+
+/* Barra de navegación */
+
+
+.nav-links a:hover {
+    color: #E5E7EB;
+}
+
+.profile-link {
+    background-color: #4B5563;
+    padding: 8px 15px;
+    border-radius: 5px;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+
+.title .subtitle {
+    color: #6B7280;
+    font-size: 16px;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Tarjetas de profesionales */
+.professionals-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.professional-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.professional-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+.professional-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 3px solid #1F2937;
+}
+
+.professional-card h3 {
+    margin: 18px 18px 8px;
+    color: #1F2937;
+    font-size: 20px;
+}
+
+.professional-card p {
+    margin: 0 18px 12px;
+    color: #6B7280;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.professional-card .info {
+    background-color: #F3F4F6;
+    padding: 15px 18px;
+    margin-top: 10px;
+    font-size: 13px;
+    color: #4B5563;
+}
+
+.professional-card .info strong {
+    color: #1F2937;
+}
+
+.opportunities {
+    padding: 15px 18px;
+    font-size: 13px;
+    border-top: 1px solid #E5E7EB;
+    color: #4B5563;
+}
+
+.opportunities h4 {
+    margin: 0 0 10px;
+    color: #1F2937;
+    font-size: 15px;
+}
+
+.opportunities p {
+    margin: 0 0 15px;
+    line-height: 1.5;
+}
+

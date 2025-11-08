@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./desarrolladores_Template.xhtml">
+            <ui:define name="content">
+                <div class="content">
+                    <div class="header" style="width: 1100px">
+                        <h1>CORREOS ENVIADOS</h1>
+                        <div>
+                            <a href="#" onclick="openEmailModal(); return false;" >
+                                <button class="btn btn-primary">Redactar Email/s</button>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="profile-container">
+
+
+                        <table border="1"  id="t-all" class="jsf-data-tables display nowrap" width="1100px"  >
+                            <thead>
+                                <tr>
+                                    <th>FECHA DE ENVIO</th>
+                                    <th>REMITENTE</th>
+                                    <th>ASUNTO</th>
+                                    <th>DETALLE</th>    
+                                    <th>DESTINATARIO</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ui:repeat value="#{controllerCorreos.listarCorreosUserDes()}" var="correo">
+                                    <tr>
+                                        <td>
+                                            <h:outputText value="#{correo.idcorreo.fechaEnvio}">
+                                                <f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Bogota"/>
+                                            </h:outputText>
+                                        </td>
+                                        <td>#{correo.idcorreo.remitenteId.nombres}</td>
+                                        <td>#{correo.idcorreo.asunto}</td>
+                                        <td>#{correo.idcorreo.detalle}</td>
+                                        <td>#{correo.correoExternos}</td>
+
+                                    </tr>
+                                </ui:repeat>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./index_Template.xhtml">
+
+            <ui:define name="content">
+                <div class="login_conten_se">
+                    <h:panelGroup style="height: 320px;  border-right: none" layout="block" styleClass="container_img">
+                        <h:graphicImage style="height: 100%; width: 100%;" library="img" name="une.jpg"/>
+                    </h:panelGroup>
+                    <h:form id="loginForm">
+                        <h:panelGroup layout="block" styleClass="container_login">
+                            <h2>Inicio de Sesión</h2>
+
+                            <h:panelGroup layout="block" styleClass="form-group">
+                                <h:outputLabel for="login-username" value="Nombre de Usuario" />
+                                <h:inputText id="login-username" value="#{login.usuario}" required="true" styleClass="form-control" />
+                            </h:panelGroup>
+
+                            <h:panelGroup layout="block" styleClass="form-group">
+                                <h:outputLabel for="login-email" value="Correo Electrónico" />
+                                <h:inputText id="login-email" value="#{login.correo}" required="true" styleClass="form-control" />
+                            </h:panelGroup>
+
+                            <h:panelGroup layout="block" styleClass="form-group">
+                                <h:outputLabel for="login-password" value="Contraseña" />
+                                <h:inputSecret id="login-password" value="#{login.contrasenna}" required="true" styleClass="form-control" />
+                            </h:panelGroup>
+
+                            <h:commandButton type="submit" value="Ingresar" action="#{login.iniciarSesion()}" styleClass="btn btn-primary" />
+
+                            <h:panelGroup layout="block" styleClass="login-link">
+                                ¿No tienes una cuenta?
+                                <h:link outcome="registro" value="Regístrate aquí" />
+                            </h:panelGroup>
+                        </h:panelGroup>
+
+                        <h:panelGroup id="mensajesSwalUni" rendered="#{not empty facesContext.messageList}">
+                            <script>
+                                Swal.fire({
+                                    icon: "#{facesContext.maximumSeverity.ordinal eq 0 ? 'success' : 'error'}",
+                                    title: "#{facesContext.maximumSeverity.ordinal eq 0 ? 'Éxito' : 'Error'}",
+                                    text: "#{facesContext.messageList[0].summary}",
+                                    confirmButtonColor: '#efb810'
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        window.location = "#{facesContext.externalContext.requestContextPath}/inicioSesion.xhtml";
+                                    }
+                                });
+                            </script>
+                        </h:panelGroup>
+                    </h:form>
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

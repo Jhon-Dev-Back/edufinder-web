@@ -1,0 +1,69 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 19/09/2025, 11:17:40 a. m.
+    Author     : Jhon Deibys Torres
+*/
+
+.contentgr {
+    flex-grow: 1;
+    padding: 20px;
+    
+    width: 1050px;
+}
+
+.heal{
+    
+        background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.health{
+    
+      
+    padding: 15px;
+   
+  display: flex;
+  
+}
+
+.sweet{
+    
+    width: 320px;
+        background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 20px;
+  
+}
+
+.graficContent{
+  
+    display: flex;
+    flex-wrap: wrap;   /* permite que los hijos pasen a la siguiente fila */
+    justify-content: center; /* centra los elementos horizontalmente */
+    gap: 20px;
+}
+
+.heal .graficContent .graph-card{
+    
+    margin-left: 90px;
+}
+
+
+
+

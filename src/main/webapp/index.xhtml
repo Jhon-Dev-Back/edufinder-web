@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./index_Template.xhtml">
+
+            <ui:define name="content">
+                <div class="welcome-card">
+        <div class="welcome-content">
+            <h1 class="welcome-title">¡Bienvenido a <span>EduFinder</span>!</h1>
+            <p class="welcome-text">
+                Tu espacio para descubrir oportunidades académicas, conectar con docentes y 
+                desarrollar tus habilidades. Prepárate para comenzar tu camino al conocimiento.
+            </p>
+
+            <h:outputLink  value="inicioSesion.xhtml" styleClass="welcome-button">
+                Comenzar →
+            </h:outputLink>
+        </div>
+    </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

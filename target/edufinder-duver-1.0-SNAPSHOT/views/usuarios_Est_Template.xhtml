@@ -1,0 +1,118 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="/css/default.css"/>
+        <h:outputStylesheet name="/css/cssLayout.css"/>
+        <h:outputStylesheet library="css" name="diseñoPlanEstudio.css" />
+        <h:outputStylesheet library="css" name="diseñoPerfilUsuario.css" />
+        <h:outputStylesheet library="css" name="diseñoPrincipalInicio.css" />
+        <h:outputStylesheet library="css" name="diseñoTest.css" />
+        <h:outputStylesheet library="css" name="modalPerfilUser.css" />
+        <h:outputStylesheet library="css" name="diseñoProfesionales.css" />
+        <h:outputStylesheet library="css" name="diseñoUniversidades.css" />
+        <h:outputStylesheet library="css" name="diseñoComparativaUniversidades.css" />
+        <h:outputStylesheet library="css" name="bot.css" />
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <h:outputScript library="js" name="test.js"/>
+        <h:outputScript library="js" name="modalPerfilUser.js"/>
+        <h:outputScript library="js" name="comparativa.js"/>
+        <title>Perfil Usuarios</title>
+    </h:head>
+
+    <h:body>
+
+        <div id="top">
+            <ui:insert name="top">
+                <div class="header">
+
+                    <a  class="logo">
+                        <h1>EduFinder</h1>
+                    </a>
+                    <h:graphicImage library="img" name="logo_edufinder.png"/>
+                    <p>Descubre el plan de estudios perfecto para tu futuro</p>
+                </div>
+
+                <div class="nav">
+                    <div class="nav-content">
+                        <div class="nav-links">
+                            <a href="perfil_Users_Temp_Cliente.xhtml">Mi Perfil</a>
+                            <a href="inicio_principal_Temp_Cliente.xhtml">Pagina Principal</a>
+                            <a href="test_Temp_Cliente.xhtml">Test</a>
+                            <a href="recomendaciones_Temp_Cliente.xhtml">Universidades</a>
+                            <a href="saber_Profesionales_Temp_Cliente.xhtml">Profesionales</a>
+                            <a href="uni_chat.xhtml">IA</a>
+                            <a href="inicio_Temp_Cliente.xhtml">Plan de Estudio</a>
+                            <button type="button" class="a" data-bs-toggle="modal" data-bs-target="#modalCerrarSesion">
+                                Cerrar Sesión
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="modalCerrarSesion" tabindex="-1" style="display: none;" aria-labelledby="cerrarSesionLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-contenido">
+
+                        <div class="modal-cabecera-personalizada">
+                            <h2 class="modal-titulo" id="cerrarSesionLabel">Confirmar Cierre de Sesión</h2>
+                        </div>
+
+                        <div class="modal-cuerpo-personalizado">
+                            
+                            <h2>¿Está seguro que desea cerrar sesión?</h2>
+                            <div class="boton">
+                             <h:form>
+                                <h:commandButton value="Si, Cerrar Sesión" 
+                                                 action="#{login.cerrarSesion()}"
+                                                 styleClass="modal-boton-confirmar"/>
+                            </h:form>
+                             <button type="button" class="modal-boton-cancelar" data-bs-dismiss="modal">No, Cancelar</button>
+
+                            </div>
+                        </div>
+  
+                    </div>
+                </div>
+            </div>
+
+            </ui:insert>
+        </div>
+
+        <div id="content" class="center_content">
+            <ui:insert name="content">Content</ui:insert>
+        </div>
+
+        <div id="bottom">
+            <ui:insert name="bottom">
+                <div class="stats-section">
+                    <div class="footer-section">
+                        <h4>Sobre nosotros</h4>
+                        <p>Ayudar a los estudiantes a tomar decisiones informadas sobre su futuro académico.</p>
+                    </div>
+                    <h2>Nuestros contactos</h2>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number"></div>
+                            <p>+57 3168377842</p>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number"></div>
+                            <p>lopezduver23@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="footer-bottom">
+                        © 2024 Edufinder, un futuro de aprendizaje.
+                    </div>
+                </div>
+            </ui:insert>
+        </div>
+
+    </h:body>
+
+</html>
