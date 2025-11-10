@@ -1,0 +1,18 @@
+/* AUTOMATICALLY GENERATED ON Sun Nov 09 18:03:49 COT 2025*/
+/* DO NOT EDIT */
+
+grant {
+  permission javax.security.jacc.WebResourcePermission "/resources/*";
+  permission javax.security.jacc.WebResourcePermission "/:/resources/*";
+  permission javax.security.jacc.WebUserDataPermission "/resources/*";
+  permission javax.security.jacc.WebUserDataPermission "/:/resources/*";
+};
+
+grant      principal * * {
+  permission javax.security.jacc.WebRoleRefPermission "jsp", "**";
+  permission javax.security.jacc.WebRoleRefPermission "", "**";
+  permission javax.security.jacc.WebRoleRefPermission "Faces Servlet", "**";
+  permission javax.security.jacc.WebRoleRefPermission "default", "**";
+  permission javax.security.jacc.WebRoleRefPermission "com.mycompany.edufinder.duver.JAXRSConfiguration", "**";
+};
+

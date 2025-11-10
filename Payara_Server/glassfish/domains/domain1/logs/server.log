@@ -1,0 +1,3 @@
+[2025-11-10T12:18:31.830-0500] [Payara 5.2020.6] [INFO] [] [javax.enterprise.resource.resourceadapter.com.sun.enterprise.connectors.service] [tid: _ThreadID=1969 _ThreadName=RA Shutdown] [timeMillis: 1762795111830] [levelValue: 800] [[
+  RAR7094: __ds_jdbc_ra shutdown successful.]]
+

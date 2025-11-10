@@ -1,0 +1,5 @@
+{
+    "appService.preDeployTask": "package:edufinder-duver",
+    "appService.deploySubpath": "target\\edufinder-duver-1.0-SNAPSHOT.war",
+    "appService.defaultWebAppToDeploy": "/subscriptions/a1a8dd07-861d-4be1-b78a-8c2d919b0d2c/resourceGroups/Aplicaciones_Wbs/providers/Microsoft.Web/sites/edufinder"
+}
